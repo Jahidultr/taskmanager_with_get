@@ -3,7 +3,7 @@ import 'package:taskmanager_with_get/ui/screens/cancelled_task_screen.dart';
 import 'package:taskmanager_with_get/ui/screens/completed_task_screen.dart';
 import 'package:taskmanager_with_get/ui/screens/new_task_screen.dart';
 import 'package:taskmanager_with_get/ui/screens/progress_task_screen.dart';
-import 'package:taskmanager_with_get/ui/utils/app_colors.dart';
+import 'package:taskmanager_with_get/ui/widgets/tm_app_bar.dart';
 
 class MainBottomNavBarScreen extends StatefulWidget {
   const MainBottomNavBarScreen({super.key});
@@ -23,40 +23,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.themeColor,
-        title: Row(
-          children: [
-            CircleAvatar(
-              radius: 19,
-              // backgroundImage: Image.asset('assets/images/jahid.JPG'),
-              backgroundColor: Colors.white,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Jahidul Islam',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    'jahidul@gmail.com',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: TMAppBar(),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
@@ -73,16 +40,16 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
             label: 'New',
           ),
           NavigationDestination(
+            icon: Icon(Icons.pix_rounded),
+            label: 'progress',
+          ),
+          NavigationDestination(
             icon: Icon(Icons.check_box),
             label: 'Completed',
           ),
           NavigationDestination(
             icon: Icon(Icons.cancel_outlined),
             label: 'Canceled',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.pix_rounded),
-            label: 'progress',
           ),
         ],
       ),
